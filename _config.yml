@@ -1,10 +1,10 @@
 # Site settings
-title:       Pixyll
+title:       Deep Robotics
 email:       your_email@example.com
 author:      John Otander
-description: "A simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff."
+description: "A blog about deep learning, robotics and AI."
 baseurl:     ""
-url:         "http://pixyll.com"
+url:         "http://vmayoral.github.io"
 date_format: "%b %-d, %Y"
 
 # Google services
