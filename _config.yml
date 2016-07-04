@@ -1,7 +1,7 @@
 # Site settings
 title:       Deep Robotics
-email:       your_email@example.com
-author:      John Otander
+email:       v.mayoralv@gmail.com
+author:      Víctor Mayoral Vilches
 description: "A blog about deep learning, robotics and AI."
 baseurl:     ""
 url:         "http://vmayoral.github.io"
