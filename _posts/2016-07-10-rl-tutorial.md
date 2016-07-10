@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      A comprehensive approach to Reinforcement Learning
+title:      A comprehensive approach to Reinforcement Learning: Q-learning
 date:       2016-07-10 
-summary:    Comprehensive introduction to Reinforcement Learning for robotics using a the cat-mouse-cheese example coded in Python.
+summary:    Comprehensive introduction to Reinforcement Learning for robotics with Q-learning using the cat-mouse-cheese example coded in Python.
 categories: robots, ai, deep learning, rl, reinforcement learning
 mathjax: true
 ---
