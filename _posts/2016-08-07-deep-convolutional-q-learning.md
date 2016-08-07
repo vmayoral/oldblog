@@ -45,9 +45,10 @@ The most common form of a ConvNet architecture stacks a few Convolutional and RE
 
 where the `*` indicates repetition, and the `POOL?` indicates an optional pooling layer. Moreover, `N >= 0` (and usually `N <= 3`), `M >= 0`, `K >= 0` (and usually `K < 3`).
 
+<hr>
 
 <div id='example'/>
-# Deep Convolutional Reinforcement Learning, an example
+## Deep Convolutional Reinforcement Learning, an example
 <div id='code'/>
 #### Code explained
 Let's analyze a 2D fruit fetch example based on [@bitwise-ben](https://github.com/bitwise-ben/Fruit)'s work. Code is available [here](examples/Fruit/qlearning.py):
@@ -232,8 +233,10 @@ img_saver.close()
 
 ```
 
+<hr>
+
 <div id='resources'/>
-### Resources:
+## Resources:
 - Toy example of deep reinforcement model playing the game of snake, https://github.com/bitwise-ben/Snake
 - Toy example of a deep reinforcement learning model playing a game of catching fruit, https://github.com/bitwise-ben/Fruit
 - Keras plays catch, a single file Reinforcement Learning example, Eder Santana, http://edersantana.github.io/articles/keras_rl/
