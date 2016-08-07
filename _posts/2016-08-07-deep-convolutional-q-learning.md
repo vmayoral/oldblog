@@ -170,7 +170,7 @@ def save_img():
         frame += 1
 ```
 
-The model and hyperparameters are defined as follows:
+The model and hyperparameters of the network are defined as follows (refer to [Keras's conv. layers](https://keras.io/layers/convolutional/) if you'd like to get a deeper understanding):
 
 ```python
 nb_epochs = 500
