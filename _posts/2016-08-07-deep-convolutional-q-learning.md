@@ -20,7 +20,8 @@ mathjax: true
 Let's analyze a 2D fruit fetch example based on [@bitwise-ben](https://github.com/bitwise-ben/Fruit)'s work. Code is available [here](examples/Fruit/qlearning.py):
 
 Dependencies used by the Deep Q-learning implementation:
-```Python
+
+```python
 import os
 from random import sample as rsample
 import numpy as np
@@ -32,13 +33,13 @@ from matplotlib import pyplot as plt
 ```
 
 The `GRID_SIZE` determines how big the environment will be (the bigger the environment, the tougther is to train it)
-```Python
+```python
 GRID_SIZE = 15
 ```
 The following function defines a Python coroutine that controls the generic Fruit game dynamics
 (read about Python coroutines [here](https://jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/)). The coroutine is basically instantiated into a variable that receives `.next()` and `.send()` calls. The first one gets the function code to execute until the point where there's a call to `yield`. The `.send()` call includes an action as parameters which allows the function to finish its execution (it actually never finishes since the code is wrapped in an infinite loop, luckily we control its execution through the primitives just described).
 
-```Python
+```python
 def episode():
     """ 
     Coroutine function for an episode.     
@@ -79,7 +80,7 @@ Experience replay gets implemented in the coroutine below. Within this code, one
 - `reward`: reward obtained after taking `action`
 - `S_prime`: next state after taking `action`
 
-```Python
+```python
 def experience_replay(batch_size):
     """
     Coroutine function for implementing experience replay.    
@@ -94,7 +95,8 @@ def experience_replay(batch_size):
 ```
 
 Similar to what was described above, the images are saved using another coroutine:
-```Python
+
+```python
 def save_img():
     """
     Coroutine to store images in the "images" directory
@@ -110,7 +112,8 @@ def save_img():
 ```
 
 The model and hyperparameters are defined as follows:
-```Python
+
+```python
 nb_epochs = 500
 batch_size = 128
 epsilon = .8
@@ -127,7 +130,8 @@ model.compile(RMSprop(), 'MSE')
 ```
 
 The main loop of the code implementing Deep Q-learning:
-```Python
+
+```python
 exp_replay = experience_replay(batch_size)
 exp_replay.next()  # Start experience-replay coroutine
 
@@ -173,7 +177,8 @@ for i in xrange(nb_epochs):
 ```
 
 To test the model obtained:
-```Python
+
+```python
 img_saver = save_img()
 img_saver.next()
 
@@ -193,6 +198,7 @@ for _ in xrange(10):
 img_saver.close()
 
 ```
+
 <div id='resources'/>
 #### Resources:
 - Toy example of deep reinforcement model playing the game of snake, https://github.com/bitwise-ben/Snake
