@@ -64,13 +64,16 @@ While this is pretty useful with certain sensors, jumping into image sensors is 
 
 
 <p style="border: 2px solid #000000; padding: 10px; background-color: #E5E5E5; color: black; font-weight: light;">
-From a technical perspective, a deep convolutional neural network is used as the function approximator (for *Q*). The network learns to extract pertinent visual features from the raw pixels and develop strategies that are sometimes more advanced than those devised by expert human players.
+From a technical perspective, a deep convolutional neural network is used as the function approximator (for <i>Q</i>). The network learns to extract pertinent visual features from the raw pixels and develop strategies that are sometimes more advanced than those devised by expert human players.
 </p>
 
 <hr>
 
 <div id='example'/>
 ## Deep Convolutional Reinforcement Learning, an example
+
+![](https://github.com/vmayoral/basic_reinforcement_learning/raw/master/tutorial6/examples/Fruit/images/fruit_grid15.gif)
+
 <div id='code'/>
 #### Code explained
 Let's analyze a 2D fruit fetch example based on [@bitwise-ben](https://github.com/bitwise-ben/Fruit)'s work. Code is available [here](examples/Fruit/qlearning.py):
