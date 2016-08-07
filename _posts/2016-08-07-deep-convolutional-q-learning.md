@@ -2,7 +2,7 @@
 layout:     post
 title:      Deep Convolutional Q-Learning
 date:       2016-08-07 
-summary:    Convolutional Neurral What's reinforcement lerarning? how's reinfocement learning relevant for robotics? how do we apply reinforcement learning in real problems?.
+summary:    This article covers the basics of how Convolutional Neural Networks are relevant to Reinforcement Learning and Robotics. The content displays an example where a CNN is trained using reinforcement learning  (Q-learning) to play the catch game.
 categories: robots, ai, deep learning, rl, reinforcement learning
 mathjax: true
 ---
