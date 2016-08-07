@@ -76,7 +76,7 @@ From a technical perspective, a deep convolutional neural network is used as the
 
 <div id='code'/>
 #### Code explained
-Let's analyze a 2D fruit fetch example based on [@bitwise-ben](https://github.com/bitwise-ben/Fruit)'s work. Code is available [here](examples/Fruit/qlearning.py):
+Let's analyze a 2D fruit fetch example based on [@bitwise-ben](https://github.com/bitwise-ben/Fruit)'s work. Code is available [here](https://github.com/vmayoral/basic_reinforcement_learning/blob/master/tutorial6/examples/Fruit/fruit.py):
 
 Dependencies used by the Deep Q-learning implementation:
 
