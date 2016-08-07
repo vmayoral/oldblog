@@ -2,16 +2,56 @@
 layout:     post
 title:      Deep Convolutional Q-Learning
 date:       2016-08-07 
-summary:    What's reinforcement lerarning? how's reinfocement learning relevant for robotics? how do we apply reinforcement learning in real problems?.
+summary:    Convolutional Neurral What's reinforcement lerarning? how's reinfocement learning relevant for robotics? how do we apply reinforcement learning in real problems?.
 categories: robots, ai, deep learning, rl, reinforcement learning
 mathjax: true
 ---
 
+- [Understanding Convolutional Neural Networks](#convnets)
+  - [Motivation](#motivation)
+  - [Convolutional Neural Network Architectures](#architectures)
+- [Connecting Convolutional Neural Networks](#convnets)  
 - [Deep Convolutional Reinforcement Learning, an example](#example)
   - [Code explained](#code)
-  - [Resources](#resources)  
+- [Resources](#resources)  
 
 
+<div id='convnets'/>
+### Understanding Convolutional Neural Networks
+
+Convolutional Neural Networks (ConvNets or CNNs), similar to ordinary Neural Networks, are made up of neurons that have learnable weights and biases. Each neuron receives some inputs, performs a dot product and optionally follows it with a non-linearity. The whole network still expresses a single differentiable score function however ConvNet architectures **make the explicit assumption that the inputs are images**, which *allows us to encode certain properties into the architecture*. These then make the forward function more efficient to implement and vastly reduce the amount of parameters in the network.
+
+<p style="border: 2px solid #000000; padding: 10px; background-color: #E5E5E5; color: black; font-weight: light;">
+It is worth noting that the only difference between Fully Connected layers and Convolutional layers is that the neurons in the convolutional layer are connected only to a local region in the input, and that many of the neurons in a convolutional volume share parameters. However, the neurons in both layers still compute dot products, so their functional form is identical. Therefore, it turns out that **it’s possible to convert between Fully Connected and Convolutional layers**.
+</p>
+
+
+<div id='motivation'/>
+#### Motivation
+
+As described by [Andrej Karpathy](https://github.com/karpathy) in *[CS231n Convolutional Neural Networks for Visual Recognition
+](http://cs231n.github.io/convolutional-networks/)*:
+*Regular Neural Nets don’t scale well to full images. In CIFAR-10, images are only of size 32x32x3 (32 wide, 32 high, 3 color channels), so a single fully-connected neuron in a first hidden layer of a regular Neural Network would have 32*32*3 = 3072 weights. This amount still seems manageable, but clearly this fully-connected structure does not scale to larger images. For example, an image of more respectible size, e.g. 200x200x3, would lead to neurons that have 200*200*3 = 120,000 weights. Moreover, we would almost certainly want to have several such neurons, so the parameters would add up quickly! Clearly, this full connectivity is wasteful and the huge number of parameters would quickly lead to overfitting.*
+
+A great theoretical explanation of Convolutional Neural Networks is available [here](http://cs231n.github.io/convolutional-networks).
+
+<div id='achitectures'/>
+#### Convolutional Neural Network Architectures
+
+The most common form of a ConvNet architecture stacks a few CONV-RELU layers, follows them with POOL layers, and repeats this pattern until the image has been merged spatially to a small size. At some point, it is common to transition to fully-connected layers. The last fully-connected layer holds the output, such as the class scores. In other words, the most common ConvNet architecture follows the pattern:
+
+`INPUT -> [[CONV -> RELU]*N -> POOL?]*M -> [FC -> RELU]*K -> FC`
+
+where the `*` indicates repetition, and the `POOL?` indicates an optional pooling layer. Moreover, `N >= 0` (and usually `N <= 3`), `M >= 0`, `K >= 0` (and usually `K < 3`). For example, here are some common ConvNet architectures you may see that follow this pattern:
+
+- `INPUT -> FC`, implements a linear classifier. Here `N = M = K = 0`.
+- `INPUT -> CONV -> RELU -> FC`
+- `INPUT -> [CONV -> RELU -> POOL]*2 -> FC -> RELU -> FC`. Here we see that there is a single CONV layer between every POOL layer.
+- `INPUT -> [CONV -> RELU -> CONV -> RELU -> POOL]*3 -> [FC -> RELU]*2 -> FC` Here we see two CONV layers stacked before every POOL layer. This is generally a good idea for larger and deeper networks, because multiple stacked CONV layers can develop more complex features of the input volume before the destructive pooling operation.
+
+*Prefer a stack of small filter CONV to one large receptive field CONV layer*. Suppose that you stack three 3x3 CONV layers on top of each other (with non-linearities in between, of course). In this arrangement, each neuron on the first CONV layer has a 3x3 view of the input volume. A neuron on the second CONV layer has a 3x3 view of the first CONV layer, and hence by extension a 5x5 view of the input volume. Similarly, a neuron on the third CONV layer has a 3x3 view of the 2nd CONV layer, and hence a 7x7 view of the input volume. Suppose that instead of these three layers of 3x3 CONV, we only wanted to use a single CONV layer with 7x7 receptive fields. These neurons would have a receptive field size of the input volume that is identical in spatial extent (7x7), but with several disadvantages. First, the neurons would be computing a linear function over the input, while the three stacks of CONV layers contain non-linearities that make their features more expressive. Second, if we suppose that all the volumes have \\(C\\) channels, then it can be seen that the single 7x7 CONV layer would contain \\(C \times (7 \times 7 \times C) = 49 C^2\\) parameters, while the three 3x3 CONV layers would only contain \\(3 \times (C \times (3 \times 3 \times C)) = 27 C^2\\) parameters. Intuitively, stacking CONV layers with tiny filters as opposed to having one CONV layer with big filters allows us to express more powerful features of the input, and with fewer parameters. As a practical disadvantage, we might need more memory to hold all the intermediate CONV layer results if we plan to do backpropagation.
+
+**Recent departures.** It should be noted that the conventional paradigm of a linear list of layers has recently been challanged, in Google's Inception architectures and also in current (state of the art) Residual Networks from Microsoft Research Asia. Both of these (see details below in case studies section) feature more intricate and different connectivity structures.
 
 <div id='example'/>
 ### Deep Convolutional Reinforcement Learning, an example
@@ -200,7 +240,7 @@ img_saver.close()
 ```
 
 <div id='resources'/>
-#### Resources:
+### Resources:
 - Toy example of deep reinforcement model playing the game of snake, https://github.com/bitwise-ben/Snake
 - Toy example of a deep reinforcement learning model playing a game of catching fruit, https://github.com/bitwise-ben/Fruit
 - Keras plays catch, a single file Reinforcement Learning example, Eder Santana, http://edersantana.github.io/articles/keras_rl/
@@ -208,3 +248,5 @@ img_saver.close()
 Raw, https://gist.github.com/EderSantana/c7222daa328f0e885093
 - [Create a GIF from static images](http://askubuntu.com/questions/648244/how-to-create-a-gif-from-the-command-line)
 - [Improve Your Python: 'yield' and Generators Explained](https://jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/)
+- CS231n Convolutional Neural Networks for Visual Recognition, http://cs231n.github.io/convolutional-networks/
+
