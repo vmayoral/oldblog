@@ -58,6 +58,15 @@ The following list covers a set of interesting topics related to CNNs:
 <div id='convrl'/>
 ## Convolutional Neural Networks and Reinforcement Learning
 
+As introduced in the [Reinforcement learning in robotics](http://blog.deeprobotics.es/robots,/ai,/deep/learning,/rl,/reinforcement/learning/2016/07/06/rl-intro/) article, neural networks can be used to predict Q values to great success. In [a previous entry](http://blog.deeprobotics.es/robots,/ai,/deep/learning,/rl,/reinforcement/learning/2016/07/10/rl-tutorial/) we provided an example of how a mouse can be trained to successfully fetch cheese while evading the cat in a known environment. Similarly, by using Q-learning empowered in Neural Networks (a.k.a. Deep Q-Learning) and provided that there's appropriate (*limited*) sensing, robots can learn a wide variety of tasks such as *obstacle avoidance* or *different dynamic models* that could characterize their movements.
+
+While this is pretty useful with certain sensors, jumping into image sensors is quite troublesome given the huge amount of computational resources required (remember that Neural Networks don’t scale well to images). Here's where Convolutional Neural networks play a key role and hence, by using Convolutional Neural Networks and Q-learning techniques, robots are empowered with a tool that enables them to artificially learn from images.
+
+
+<p style="border: 2px solid #000000; padding: 10px; background-color: #E5E5E5; color: black; font-weight: light;">
+From a technical perspective, a deep convolutional neural network is used as the function approximator (for *Q*). The network learns to extract pertinent visual features from the raw pixels and develop strategies that are sometimes more advanced than those devised by expert human players.
+</p>
+
 <hr>
 
 <div id='example'/>
