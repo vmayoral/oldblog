@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Deep Convolutional Q-Learning
-date:       2016-07-06 
+date:       2016-08-07 
 summary:    What's reinforcement lerarning? how's reinfocement learning relevant for robotics? how do we apply reinforcement learning in real problems?.
 categories: robots, ai, deep learning, rl, reinforcement learning
 mathjax: true
