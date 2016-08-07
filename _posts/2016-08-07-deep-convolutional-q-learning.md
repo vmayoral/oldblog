@@ -9,8 +9,8 @@ mathjax: true
 
 - [Understanding Convolutional Neural Networks](#convnets)
   - [Motivation](#motivation)
-  - [Convolutional Neural Network Architectures](#architectures)
-- [Connecting Convolutional Neural Networks](#convnets)  
+  - [Convolutional Neural Network architectures](#architectures)
+- [Convolutional Neural Networks and Reinforcement Learning](#convrl)  
 - [Deep Convolutional Reinforcement Learning, an example](#example)
   - [Code explained](#code)
 - [Resources](#resources)  
@@ -44,6 +44,18 @@ The most common form of a ConvNet architecture stacks a few Convolutional and RE
 `INPUT -> [[CONV -> RELU]*N -> POOL?]*M -> [FC -> RELU]*K -> FC`
 
 where the `*` indicates repetition, and the `POOL?` indicates an optional pooling layer. Moreover, `N >= 0` (and usually `N <= 3`), `M >= 0`, `K >= 0` (and usually `K < 3`).
+
+The following list covers a set of interesting topics related to CNNs:
+- [Common rules of thumb for ConvNets/CNNs](http://cs231n.github.io/convolutional-networks/#layersizepat)
+- [Cases studies](http://cs231n.github.io/convolutional-networks/#case)
+- [Computational considerations](http://cs231n.github.io/convolutional-networks/#comp)
+- [Transfer learning with Convolutional Neural Networks](http://cs231n.github.io/transfer-learning/)
+- [Understanding/visualizing Convolutional Neural Networks ](http://cs231n.github.io/understanding-cnn/)
+
+<hr>
+
+<div id='convrl'/>
+## Convolutional Neural Networks and Reinforcement Learning
 
 <hr>
 
