@@ -46,6 +46,7 @@ The most common form of a ConvNet architecture stacks a few Convolutional and RE
 where the `*` indicates repetition, and the `POOL?` indicates an optional pooling layer. Moreover, `N >= 0` (and usually `N <= 3`), `M >= 0`, `K >= 0` (and usually `K < 3`).
 
 The following list covers a set of interesting topics related to CNNs:
+
 - [Common rules of thumb for ConvNets/CNNs](http://cs231n.github.io/convolutional-networks/#layersizepat)
 - [Cases studies](http://cs231n.github.io/convolutional-networks/#case)
 - [Computational considerations](http://cs231n.github.io/convolutional-networks/#comp)
