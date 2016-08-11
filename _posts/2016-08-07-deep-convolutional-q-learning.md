@@ -270,4 +270,7 @@ Raw, https://gist.github.com/EderSantana/c7222daa328f0e885093
 - [Create a GIF from static images](http://askubuntu.com/questions/648244/how-to-create-a-gif-from-the-command-line)
 - [Improve Your Python: 'yield' and Generators Explained](https://jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/)
 - CS231n Convolutional Neural Networks for Visual Recognition, http://cs231n.github.io/convolutional-networks/
+- MNIH, Volodymyr, et al. Human-level control through deep reinforcement
+  learning. Nature, 2015, vol. 518, no 7540, p. 529-533.
+  ([paper](http://www.nature.com/nature/journal/v518/n7540/full/nature14236.html))
 
