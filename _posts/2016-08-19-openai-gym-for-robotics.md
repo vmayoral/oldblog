@@ -18,7 +18,7 @@ As [discussed previously](http://blog.deeprobotics.es/robots,/ai,/deep/learning,
 <div id='architecture'/>
 ## Architecture
 
-![](https://github.com/vmayoral/vmayoral.github.io/blob/master/images/gym_architecture.png)
+![](https://raw.githubusercontent.com/vmayoral/vmayoral.github.io/master/images/gym_architecture.png)
 
 The architecture consits of three main software blocks: OpenAI Gym, ROS and Gazebo. Environments developed in OpenAI Gym interact with the Robot Operating System, which is the connection between the Gym itself and Gazebo simulator. Gazebo provides a robust physics engine, high-quality graphics, and convenient programmatic and graphical interfaces.
 
