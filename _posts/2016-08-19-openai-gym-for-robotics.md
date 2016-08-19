@@ -16,7 +16,8 @@ Content based on Erle Robotics's whitepaper: <a href="http://erlerobotics.com/wh
 - [Architecture](#architecture)
 - [Getting your robot into the gym](#gym)  
 - [Results](#results)
-- [Demo](#demo)  
+- [Demo](#demo)
+- [Resources](#resources)  
 
 The [OpenAI Gym](http://gym.openai.com) is a is a toolkit for reinforcement learning research that has recently gained popularity in the machine learning community. The work presented here follows the same baseline structure displayed by researchers in the OpenAI Gym, and builds a gazebo environment on top of that. OpenAI Gym focuses on the episodic setting of RL, aiming to maximize the expectation of total reward each episode and to get an acceptable level of performance as fast as possible. This toolkit aims to integrate the Gym API with robotic hardware, validating reinforcement learning algorithms in real environments. Real-world operation is achieved combining [Gazebo simulator](http://gazebosim.org), a 3D modeling and rendering tool, with the [Robot Operating System](http://ros.org), a set of libraries and tools that help software developers create robot applications.
 
@@ -198,3 +199,11 @@ This smoother behaviour where forward actions are being exploited in straight tr
 <center>
 <iframe width="640" height="360" src="https://www.youtube.com/embed/8hxCBkgp95k" frameborder="0" allowfullscreen></iframe>
 </center>
+
+<div id='resources'/>
+## Resources
+
+- Extending the OpenAI Gym for robotics: a toolkit
+for reinforcement learning using ROS and Gazebo whitepaper ([pdf](http://erlerobotics.com/whitepaper/robot_gym.pdf))
+- [Erle Robotics gym fork](https://github.com/erlerobot/gym)
+- Brockman, G., Cheung, V., Pettersson, L., Schneider, J., Schulman, J., Tang, J., & Zaremba, W. (2016). OpenAI Gym. arXiv preprint arXiv:1606.01540.
