@@ -7,6 +7,11 @@ categories: robots, simulation, ai, rl, reinforcement learning
 mathjax: true
 ---
 
+- [Architecture](#architecture)
+- [Results](#results)
+- [Getting our robot into the gym](#gym)  
+- [Demo](#demo)  
+
 ![](https://raw.githubusercontent.com/vmayoral/vmayoral.github.io/master/images/robot_gym.png)
 
 <p style="border: 2px solid #000000; padding: 10px; background-color: #E5E5E5; color: black; font-weight: light;">
@@ -187,7 +192,7 @@ Comparing results one can tell that in this particular scenario, the learning in
 
 This smoother behaviour where forward actions are being exploited in straight tracks leads to higher maximum cumulated rewards. We get values near 3500 in Sarsa while just get cumulated rewards around 2500 in Q-Learning. Running Sarsa for more episodes will cause to get higher average rewards.
 
-<div id='results'/>
+<div id='demo'/>
 ## Demo
 
 <center>
