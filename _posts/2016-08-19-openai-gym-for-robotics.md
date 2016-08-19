@@ -22,7 +22,7 @@ As [discussed previously](http://blog.deeprobotics.es/robots,/ai,/deep/learning,
 
 <div style="align: left; text-align:center;">
     <img src="https://raw.githubusercontent.com/vmayoral/vmayoral.github.io/master/images/gym_architecture.png"/>
-    <div>Simplified software architecture used in OpenAI Gym for robotics.</div>
+    <div><i>Simplified software architecture used in OpenAI Gym for robotics.</i></div>
     <br>
 </div>
 
@@ -162,11 +162,7 @@ env.close()
 
 ```
 
-By default, you'll see that the environment gets launched without a graphical interface but you can bring it up by typing `gzclient` into a new command line prompt. If you do so, you'll get something like this:
-
-<center>
-<iframe width="640" height="360" src="https://www.youtube.com/embed/8hxCBkgp95k" frameborder="0" allowfullscreen></iframe>
-</center>
+By default, you'll see that the environment gets launched without a graphical interface but you can bring it up by typing `gzclient` into a new command line prompt. 
 
 <div id='results'/>
 ## Results
@@ -175,7 +171,7 @@ Currently, plotting tools are not completely integrated within the gym APIs (e.g
 
 <div style="align: left; text-align:center;">
     <img src="https://raw.githubusercontent.com/vmayoral/vmayoral.github.io/master/images/plot_qlearn.png"/>
-    <div>Results of the Turtlebot robot while learning how to avoid obstacles in the gym after 3000 iterations running a Q-Learning algorithm.</div>
+    <div><i>Results of the Turtlebot robot while learning how to avoid obstacles in the gym after 3000 iterations running a Q-Learning algorithm.</i></div>
     <br>
 </div>
 
@@ -183,6 +179,17 @@ While not a universal benchmarking mechanism, the overall architecture proposed 
 
 <div style="align: left; text-align:center;">
     <img src="https://raw.githubusercontent.com/vmayoral/vmayoral.github.io/master/images/plot_sarsa.png"/>
-    <div>Results of the Turtlebot robot while learning how to avoid obstacles in the gym after 3000 iterations running a SARSA algorithm.</div>
+    <div><i>Results of the Turtlebot robot while learning how to avoid obstacles in the gym after 3000 iterations running a Sarsa algorithm.</i></div>
     <br>
 </div>
+
+Comparing results one can tell that in this particular scenario, the learning in Q-Learning occurs faster than in Sarsa, this happens because Q-Learning is able to learn a policy even if taken actions are chosen randomly. However, Q-Learning shows more risky moves (taking turns really close to walls) while in Sarsa we see a smoother general behaviour. The major difference between Sarsa and Q-Learning, is that the maximum reward for the next state is not necessarily used for updating the Q-values (learning table). Instead, a new action, and therefore reward, is selected using the same policy that determined the original action. This is how Sarsa is able to take into account the control policy of the agent during learning. It means that information needs to be stored longer before the action values can be updated, but also means that our robot is going to take risky actions much frequently. 
+
+This smoother behaviour where forward actions are being exploited in straight tracks leads to higher maximum cumulated rewards. We get values near 3500 in Sarsa while just get cumulated rewards around 2500 in Q-Learning. Running Sarsa for more episodes will cause to get higher average rewards.
+
+<div id='results'/>
+## Demo
+
+<center>
+<iframe width="640" height="360" src="https://www.youtube.com/embed/8hxCBkgp95k" frameborder="0" allowfullscreen></iframe>
+</center>
