@@ -20,7 +20,8 @@ As [discussed previously](http://blog.deeprobotics.es/robots,/ai,/deep/learning,
 
 <div style="align: left; text-align:center;">
     <img src="https://raw.githubusercontent.com/vmayoral/vmayoral.github.io/master/images/gym_architecture.png"/>
-    <div class="caption">Some caption text</div>
+    <div style="font-weight: 200; width: 200px; text-align: center;">Some caption text</div>
+    <br>
 </div>
 
 
