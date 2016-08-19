@@ -167,3 +167,22 @@ By default, you'll see that the environment gets launched without a graphical in
 <center>
 <iframe width="640" height="360" src="https://www.youtube.com/embed/8hxCBkgp95k" frameborder="0" allowfullscreen></iframe>
 </center>
+
+<div id='results'/>
+## Results
+
+Currently, plotting tools are not completely integrated within the gym APIs (e.g.: `env.monitor` could be further improved in the `Gazebo` abstraction) however it's possible to get life plots of the robot performance like the one that follows:
+
+<div style="align: left; text-align:center;">
+    <img src="https://raw.githubusercontent.com/vmayoral/vmayoral.github.io/master/images/plot_qlearn.png"/>
+    <div>Results of the Turtlebot robot while learning how to avoid obstacles in the gym after 3000 iterations running a Q-Learning algorithm.</div>
+    <br>
+</div>
+
+While not a universal benchmarking mechanism, the overall architecture proposed serves its purpose when it comes to benchmarking different techniques. The plot below displays the same robot using the SARSA algorithm instead:
+
+<div style="align: left; text-align:center;">
+    <img src="https://raw.githubusercontent.com/vmayoral/vmayoral.github.io/master/images/plot_sarsa.png"/>
+    <div>Results of the Turtlebot robot while learning how to avoid obstacles in the gym after 3000 iterations running a SARSA algorithm.</div>
+    <br>
+</div>
