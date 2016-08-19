@@ -46,13 +46,14 @@ It's relevant to note that within the architecture proposed, our team considered
 Let's go ahead and code of a simple example with this OpenAI Gym extension for robotics (that we call the *robot gym*). We'll take the Turtlebot and use Reinforcement Learning (Q-Learning particularly) to teach the robot how to avoid obstacles using only a simulated LIDAR:
 
 <p style="border: 2px solid #000000; padding: 10px; background-color: #E5E5E5; color: black; font-weight: light;">
-Getting everything ready for the *robot gym* to work will need you to set it up appropriately. Refer to <a href="https://github.com/erlerobot/gym/blob/master/gym/envs/gazebo/INSTALL.md">these instructions</a> and do it yourself.
+Getting everything ready for the <i>robot gym</i> to work will need you to set it up appropriately. Refer to <a href="https://github.com/erlerobot/gym/blob/master/gym/envs/gazebo/INSTALL.md">these instructions</a> and do it yourself.<br>
 <br>
 If you're looking for full and complete code example, refer to <a href="https://github.com/erlerobot/gym/blob/master/gym/envs/gazebo/tests/circuit2_turtlebot_lidar_qlearn.py">circuit2_turtlebot_lidar_qlearn.py</a>.
 </p>
 
 
 First, we define a `QLearn` class that will be used later in our gym script:
+
 ```python
 import random
 
@@ -163,4 +164,6 @@ env.close()
 
 By default, you'll see that the environment gets launched without a graphical interface but you can bring it up by typing `gzclient` into a new command line prompt. If you do so, you'll get something like this:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/8hxCBkgp95k" frameborder="0" allowfullscreen></iframe>
+<center>
+<iframe width="640" height="360" src="https://www.youtube.com/embed/8hxCBkgp95k" frameborder="0" allowfullscreen></iframe>
+</center>
