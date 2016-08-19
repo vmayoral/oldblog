@@ -14,8 +14,8 @@ Content based on Erle Robotics's whitepaper: <a href="http://erlerobotics.com/wh
 </p>
 
 - [Architecture](#architecture)
+- [Getting your robot into the gym](#gym)  
 - [Results](#results)
-- [Getting our robot into the gym](#gym)  
 - [Demo](#demo)  
 
 The [OpenAI Gym](http://gym.openai.com) is a is a toolkit for reinforcement learning research that has recently gained popularity in the machine learning community. The work presented here follows the same baseline structure displayed by researchers in the OpenAI Gym, and builds a gazebo environment on top of that. OpenAI Gym focuses on the episodic setting of RL, aiming to maximize the expectation of total reward each episode and to get an acceptable level of performance as fast as possible. This toolkit aims to integrate the Gym API with robotic hardware, validating reinforcement learning algorithms in real environments. Real-world operation is achieved combining [Gazebo simulator](http://gazebosim.org), a 3D modeling and rendering tool, with the [Robot Operating System](http://ros.org), a set of libraries and tools that help software developers create robot applications.
@@ -44,7 +44,7 @@ It's relevant to note that within the architecture proposed, our team considered
 
 
 <div id='gym'/>
-## Getting our robot into the gym
+## Getting your robot into the gym
 
 ![](https://raw.githubusercontent.com/vmayoral/vmayoral.github.io/master/images/turtlec2_new.png)
 
