@@ -26,5 +26,141 @@ As [discussed previously](http://blog.deeprobotics.es/robots,/ai,/deep/learning,
     <br>
 </div>
 
-The architecture consits of three main software blocks: OpenAI Gym, ROS and Gazebo. Environments developed in OpenAI Gym interact with the Robot Operating System, which is the connection between the Gym itself and Gazebo simulator. Gazebo provides a robust physics engine, high-quality graphics, and convenient programmatic and graphical interfaces.
+The architecture consists of three main software blocks: *OpenAI Gym*, *ROS* and *Gazebo*. Environments developed in OpenAI Gym interact with the Robot Operating System, which is the connection between the Gym itself and Gazebo simulator. Gazebo provides a robust physics engine, high-quality graphics, and convenient programmatic and graphical interfaces.
 
+The architecture described was tested with three different robots:
+- [Erle-Copter](http://erlerobotics.com/blog/erle-copter/)
+- [Erle-Rover](http://erlerobotics.com/blog/erle-rover/)
+- [Turtlebot](http://www.turtlebot.com/)
+
+<p style="border: 2px solid #000000; padding: 10px; background-color: #E5E5E5; color: black; font-weight: light;">
+It's relevant to note that within the architecture proposed, our team considered also robots with an autopilot. This optional element, common in certain environments adds a layer of complexity to the overall simulation setup.
+</p>
+
+
+<div id='gym'/>
+## Getting our robot into the gym
+
+![](https://raw.githubusercontent.com/vmayoral/vmayoral.github.io/master/images/turtlec2_new.png)
+
+Let's go ahead and code of a simple example with this OpenAI Gym extension for robotics (that we call the *robot gym*). We'll take the Turtlebot and use Reinforcement Learning (Q-Learning particularly) to teach the robot how to avoid obstacles using only a simulated LIDAR:
+
+<p style="border: 2px solid #000000; padding: 10px; background-color: #E5E5E5; color: black; font-weight: light;">
+Getting everything ready for the *robot gym* to work will need you to set it up appropriately. Refer to <a href="https://github.com/erlerobot/gym/blob/master/gym/envs/gazebo/INSTALL.md">these instructions</a> and do it yourself.
+<br>
+If you're looking for full and complete code example, refer to <a href="https://github.com/erlerobot/gym/blob/master/gym/envs/gazebo/tests/circuit2_turtlebot_lidar_qlearn.py">circuit2_turtlebot_lidar_qlearn.py</a>.
+</p>
+
+
+First, we define a `QLearn` class that will be used later in our gym script:
+```python
+import random
+
+class QLearn:
+    def __init__(self, actions, epsilon, alpha, gamma):
+        self.q = {}
+        self.epsilon = epsilon  # exploration constant
+        self.alpha = alpha      # discount constant
+        self.gamma = gamma      # discount factor
+        self.actions = actions
+
+    def getQ(self, state, action):
+        return self.q.get((state, action), 0.0)
+
+    def learnQ(self, state, action, reward, value):
+        '''
+        Q-learning:
+            Q(s, a) += alpha * (reward(s,a) + max(Q(s') - Q(s,a))            
+        '''
+        oldv = self.q.get((state, action), None)
+        if oldv is None:
+            self.q[(state, action)] = reward
+        else:
+            self.q[(state, action)] = oldv + self.alpha * (value - oldv)
+
+    def chooseAction(self, state, return_q=False):
+        q = [self.getQ(state, a) for a in self.actions]
+        maxQ = max(q)
+
+        if random.random() < self.epsilon:
+            minQ = min(q); mag = max(abs(minQ), abs(maxQ))
+            # add random values to all the actions, recalculate maxQ
+            q = [q[i] + random.random() * mag - .5 * mag for i in range(len(self.actions))] 
+            maxQ = max(q)
+
+        count = q.count(maxQ)
+        # In case there're several state-action max values 
+        # we select a random one among them
+        if count > 1:
+            best = [i for i in range(len(self.actions)) if q[i] == maxQ]
+            i = random.choice(best)
+        else:
+            i = q.index(maxQ)
+
+        action = self.actions[i]        
+        if return_q: # if they want it, give it!
+            return action, q
+        return action
+
+    def learn(self, state1, action1, reward, state2):
+        maxqnew = max([self.getQ(state2, a) for a in self.actions])
+        self.learnQ(state1, action1, reward, reward + self.gamma*maxqnew)
+```
+
+Now, the real fun. We just need to import the corresponding environment and call the traditional OpenAI gym's primitives (`env.reset()`, `env.step(action)`, etc.):
+
+```python
+env = gym.make('GazeboCircuit2TurtlebotLidar-v0')
+
+outdir = '/tmp/gazebo_gym_experiments'
+env.monitor.start(outdir, force=True, seed=None)
+last_time_steps = numpy.ndarray(0)
+qlearn = qlearn.QLearn(actions=range(env.action_space.n),
+                alpha=0.2, gamma=0.8, epsilon=0.9)
+
+initial_epsilon = qlearn.epsilon
+epsilon_discount = 0.9986
+start_time = time.time()
+total_episodes = 10000
+highest_reward = 0
+
+for x in range(total_episodes):
+    done = False
+    cumulated_reward = 0
+    observation = env.reset()
+    if qlearn.epsilon > 0.05:
+        qlearn.epsilon *= epsilon_discount
+    state = ''.join(map(str, observation))
+
+    for i in range(1500):
+        # Pick an action based on the current state
+        action = qlearn.chooseAction(state)
+
+        # Execute the action and get feedback
+        observation, reward, done, info = env.step(action)
+        cumulated_reward += reward
+
+        if highest_reward < cumulated_reward:
+            highest_reward = cumulated_reward
+
+        nextState = ''.join(map(str, observation))
+
+        qlearn.learn(state, action, reward, nextState)
+        if not(done):
+            state = nextState
+        else:
+            last_time_steps = numpy.append(last_time_steps, [int(i + 1)])
+            break 
+
+    m, s = divmod(int(time.time() - start_time), 60)
+    h, m = divmod(m, 60)
+    print "EP: "+str(x+1)+" - [alpha: "+str(round(qlearn.alpha,2))+" - gamma: "+str(round(qlearn.gamma,2))+" - epsilon: "+str(round(qlearn.epsilon,2))+"] - Reward: "+str(cumulated_reward)+"     Time: %d:%02d:%02d" % (h, m, s)
+
+env.monitor.close()
+env.close()
+
+```
+
+By default, you'll see that the environment gets launched without a graphical interface but you can bring it up by typing `gzclient` into a new command line prompt. If you do so, you'll get something like this:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8hxCBkgp95k" frameborder="0" allowfullscreen></iframe>
