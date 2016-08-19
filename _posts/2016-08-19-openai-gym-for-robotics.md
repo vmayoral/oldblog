@@ -7,7 +7,7 @@ categories: robots, simulation, ai, rl, reinforcement learning
 mathjax: true
 ---
 
-![](https://raw.githubusercontent.com/vmayoral/vmayoral.github.io/master/images/apm_whitepaper.jpg)
+![](https://raw.githubusercontent.com/vmayoral/vmayoral.github.io/master/images/robot_gym.png)
 
 <p style="border: 2px solid #000000; padding: 10px; background-color: #E5E5E5; color: black; font-weight: light;">
 Content based on Erle Robotics's whitepaper: <a href="http://erlerobotics.com/whitepaper/robot_gym.pdf">Extending the OpenAI Gym for robotics: a toolkit for reinforcement learning using ROS and Gazebo</a>.
