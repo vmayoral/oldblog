@@ -8,7 +8,7 @@ mathjax: true
 ---
 
 <p style="border: 2px solid #000000; padding: 10px; background-color: #E5E5E5; color: black; font-weight: light;">
-Content based on Erle Robotics's whitepaper: [Extending the OpenAI Gym for robotics: a toolkit for reinforcement learning using ROS and Gazebo](http://erlerobotics.com/whitepaper/robot_gym.pdf).
+Content based on Erle Robotics's whitepaper: <a href="http://erlerobotics.com/whitepaper/robot_gym.pdf">Extending the OpenAI Gym for robotics: a toolkit for reinforcement learning using ROS and Gazebo</a>.
 </p>
 
 The [OpenAI Gym](http://gym.openai.com) is a is a toolkit for reinforcement learning research that has recently gained popularity in the machine learning community. The work presented here follows the same baseline structure displayed by researchers in the OpenAI Gym, and builds a gazebo environment on top of that. OpenAI Gym focuses on the episodic setting of RL, aiming to maximize the expectation of total reward each episode and to get an acceptable level of performance as fast as possible. This toolkit aims to integrate the Gym API with robotic hardware, validating reinforcement learning algorithms in real environments. Real-world operation is achieved combining [Gazebo simulator](http://gazebosim.org), a 3D modeling and rendering tool, with the [Robot Operating System](http://ros.org), a set of libraries and tools that help software developers create robot applications.
@@ -20,7 +20,7 @@ As [discussed previously](http://blog.deeprobotics.es/robots,/ai,/deep/learning,
 
 <div style="align: left; text-align:center;">
     <img src="https://raw.githubusercontent.com/vmayoral/vmayoral.github.io/master/images/gym_architecture.png"/>
-    <div style="font-weight: 200; width: 200px; text-align: center;">Some caption text</div>
+    <div style="width: 200px; text-align: center; font-size:20%; font-weight: 100;"> Simplified software architecture used in OpenAI Gym for robotics</div>
     <br>
 </div>
 
