@@ -22,7 +22,7 @@ As [discussed previously](http://blog.deeprobotics.es/robots,/ai,/deep/learning,
 
 <div style="align: left; text-align:center;">
     <img src="https://raw.githubusercontent.com/vmayoral/vmayoral.github.io/master/images/gym_architecture.png"/>
-    <div style="font-weight: lighter;"> Simplified software architecture used in OpenAI Gym for robotics</div>
+    <span style="font-weight: lighter;">Simplified software architecture used in OpenAI Gym for robotics.</span>
     <br>
 </div>
 
