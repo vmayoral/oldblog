@@ -4,7 +4,7 @@ title:      Robot Reinforcement Learning with Docker
 date:       2016-09-24
 summary:    Robot Reinfocement Learning is becoming more and more popular. This article covers how to use the gym-gazebo toolbox for reinforcement learning is Docker to easily set up a reinforcement learning infrastructure for robots.
 categories: robots, simulation, ai, rl, reinforcement learning
-mathjax: true
+mathjax: false
 ---
 
 Robot Reinfocement Learning is becoming more and more popular however setting up the infrastructure to do reinforcement learning with popular tools like [Gazebo](http://gazebosim.org) and [ROS](http://ros.org) can take quite a bit of time, specially if you have to do it in tenths of servers to automate the learning process in a robot. 
