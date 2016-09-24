@@ -7,7 +7,7 @@ categories: robots, simulation, ai, rl, reinforcement learning
 mathjax: false
 ---
 
-Robot Reinfocement Learning is becoming more and more popular however setting up the infrastructure to do reinforcement learning with popular tools like [Gazebo](http://gazebosim.org) and [ROS](http://ros.org) can take quite a bit of time, specially if you have to do it in tenths of servers to automate the learning process in a robot. 
+Robot Reinforcement Learning is becoming more and more popular however setting up the infrastructure to do reinforcement learning with popular tools like [Gazebo](http://gazebosim.org) and [ROS](http://ros.org) can take quite a bit of time, specially if you have to do it in tenths of servers to automate the learning process in a robot. 
 
  This article will walk you through the process of how to use the [gym-gazebo](https://github.com/erlerobot/gym-gazebo) toolbox for reinforcement learning via a Docker container that has everything cooked already.
 
@@ -17,7 +17,7 @@ Robot Reinfocement Learning is becoming more and more popular however setting up
  Assuming that you've got [Docker installed](https://docs.docker.com/engine/installation/) in your system, here's what you need to do:
 
  ```
- docker pull erlerobotics/gym-gazebo:latest # takes about
+ docker pull erlerobotics/gym-gazebo:latest
  docker run -it gym-gazebo
 
  ```
