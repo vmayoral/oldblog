@@ -11,6 +11,7 @@ Robot Reinfocement Learning is becoming more and more popular however setting up
 
  This article will walk you through the process of how to use the [gym-gazebo](https://github.com/erlerobot/gym-gazebo) toolbox for reinforcement learning via a Docker container that has everything cooked already.
 
+
  ## Getting gym-gazebo as a Docker container
 
  Assuming that you've got [Docker installed](https://docs.docker.com/engine/installation/) in your system, here's what you need to do:
@@ -26,6 +27,7 @@ Robot Reinfocement Learning is becoming more and more popular however setting up
  ```
 
  ## Getting a local front-end
+
  Sometimes, you may want to supervise the learning process using `gzclient`. Assuming that the docker container is running locally, here's what you'd do:
 
  ```bash
